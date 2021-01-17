@@ -17,31 +17,16 @@ Customized by Marc Stähli / Jan 2021
   
   Components:
   
-KY-040 360 Degrees Rotary Encoder
+D1 Mini ESP32 (https://www.aliexpress.com/item/4000232057013.html)
 
-https://www.aliexpress.com/item/32718891419.html
+PAM8406 Digital Class D Stereo Audio Amplifier (https://www.aliexpress.com/item/32833590052.html)
 
-Audio Transformers 600:600 Ohm
+VS1003B VS1053 MP3 decoding module (https://www.aliexpress.com/item/32966454016.html)
 
-https://www.aliexpress.com/item/4001253300947.html
+0.91 inch OLED module 0.91" white/Blue OLED 128X32 (https://www.aliexpress.com/item/32798439084.html)
 
-AIYIMA 2Pcs 1.75 inch Neodymium Full Range Portable Bluetooth Large Stroke Speaker 4 Ohm 6W
+KY-040 360 Degrees Rotary Encoder (https://www.aliexpress.com/item/32718891419.html)
 
-https://www.aliexpress.com/item/4001259967285.html
+Audio Transformers 600:600 Ohm (https://www.aliexpress.com/item/4001253300947.html)
 
-PAM8406 Digital Class D Stereo Audio Amplifier
-
-https://www.aliexpress.com/item/32833590052.html
-
-VS1003B VS1053 MP3 decoding module
-
-https://www.aliexpress.com/item/32966454016.html
-
-0.91 inch OLED module 0.91" white/Blue OLED 128X32
-
-https://www.aliexpress.com/item/32798439084.html
-
-D1 Mini ESP32
-
-https://www.aliexpress.com/item/4000232057013.html
-
+AIYIMA 2Pcs 1.75 inch Speaker 4 Ohm 6W (https://www.aliexpress.com/item/4001259967285.html)
