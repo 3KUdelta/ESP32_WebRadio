@@ -15,6 +15,10 @@ Customized by Marc Stähli / Jan 2021
   - added WiFiManger to config WiFi credentials over an access point
   - added header file Stations.h for easier stations management
   
+
+[![ESP32_WebRadio](https://github.com/3KUdelta/ESP32_WebRadio/blob/main/pictures/IMG_20210119_143840.png)](https://github.com/3KUdelta/ESP32_WebRadio)
+
+  
   Components:
   
 D1 Mini ESP32 (https://www.aliexpress.com/item/4000232057013.html)
