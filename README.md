@@ -14,6 +14,8 @@ Customized by Marc Stähli / Jan 2021
   - added treble and bass control
   - added WiFiManger to config WiFi credentials over an access point
   - added header file Stations.h for easier stations management
+
+Print this radio yourself: https://www.thingiverse.com/thing:4729220
   
 
 [![ESP32_WebRadio](https://github.com/3KUdelta/ESP32_WebRadio/blob/main/pictures/IMG_20210119_143840.png)](https://github.com/3KUdelta/ESP32_WebRadio)
