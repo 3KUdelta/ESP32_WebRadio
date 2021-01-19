@@ -34,3 +34,10 @@ KY-040 360 Degrees Rotary Encoder (https://www.aliexpress.com/item/32718891419.h
 Audio Transformers 600:600 Ohm (https://www.aliexpress.com/item/4001253300947.html)
 
 AIYIMA 2Pcs 1.75 inch Speaker 4 Ohm 6W (https://www.aliexpress.com/item/4001259967285.html)
+
+[![ESP32_WebRadio](https://github.com/3KUdelta/ESP32_WebRadio/blob/main/pictures/IMG_20210119_143929.png)](https://github.com/3KUdelta/ESP32_WebRadio)
+
+[![ESP32_WebRadio](https://github.com/3KUdelta/ESP32_WebRadio/blob/main/pictures/IMG_20210119_143908.png)](https://github.com/3KUdelta/ESP32_WebRadio)
+
+[![ESP32_WebRadio](https://github.com/3KUdelta/ESP32_WebRadio/blob/main/pictures/IMG_20210116_163151.png)](https://github.com/3KUdelta/ESP32_WebRadio)
+
