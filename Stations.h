@@ -6,7 +6,7 @@ char *host[totalStations] = {
   "mp3.ffh.de", 
   "mp3.ffh.de", 
   "mp3.ffh.de", 
-  "energycharts.ice.infomaniak.ch", 
+  "rautemusik-de-hz-fal-stream11.radiohost.de", 
   "stream.srg-ssr.ch", 
   "deluxe.hoerradar.de"
 };
@@ -17,7 +17,7 @@ char *path[totalStations] = {
   "/ffhchannels/hqlounge.mp3", 
   "/ffhchannels/hqsummerfeeling.mp3", 
   "/ffhchannels/hqvoting.mp3", 
-  "/energycharts-high.mp3", 
+  "/top40", 
   "/m/rsp/mp3_128", 
   "/deluxe-easy-mp3-hq"
 };
@@ -32,7 +32,7 @@ char *radioname[totalStations] = {  // Station names to be displayed on OLED (ma
   " FFH Lounge  ", 
   " FFH Sommer  ",  
   " Leider Geil ", 
-  " NRJ Charts  ", 
+  "   TOP 40    ", 
   "  Swiss Pop  ", 
   " Deluxe Easy "
  };
