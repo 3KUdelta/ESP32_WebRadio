@@ -3,13 +3,16 @@
 //  https://www.instructables.com/Internet-Radio-Using-an-ESP32/
 //  https://github.com/educ8s/ESP32-Web-Radio-Simple
 
-//  Customized by Marc Stähli / Jan 2021 / https://github.com/3KUdelta/ESP32_WebRadio
-//  - added rotary knob to change channels, long press resets ESP-32
+//  Customized by Marc Stähli / Jan 2021
+//  - added rotary knob to change channels
 //  - added 128x32 oled display
 //  - stereo version
 //  - added treble and bass control
 //  - added WiFiManger to config WiFi credentials over an access point
 //  - added header file Stations.h for easier stations management
+//  Modified Juli 2022
+//  - Wifi Manager change
+//  - exchange dissapeared stations
 
 #include <VS1053.h>           //https://github.com/baldram/ESP_VS1053_Library
 #include <ESP32Encoder.h>     //https://github.com/madhephaestus/ESP32Encoder
@@ -19,7 +22,7 @@
 #include <Wire.h>
 #include <esp_wifi.h>
 #include <HTTPClient.h>
-#include <ESP_WiFiManager.h>  //https://github.com/khoih-prog/ESP_WiFiManager
+#include <WiFiManager.h>      //https://github.com/tzapu/WiFiManager
 #include "Stations.h"         // Radio station settings
 
 #define VS1053_CS    32
@@ -35,7 +38,7 @@
 //   tonehf       = <0..15>        // Setting treble frequency lower limit x 1000 Hz
 //   tonela       = <0..15>        // Setting bass gain (0 = off, 1dB steps)
 //   tonelf       = <0..15>        // Setting bass frequency lower limit x 10 Hz
-uint8_t rtone[4]  = {1, 14, 10, 15}; // initialize bass & treble
+uint8_t rtone[4]  = {1, 20, 10, 2}; // initialize bass & treble
 
 //***** RotaryEncoder
 const int rotaryDT  = 16;
@@ -59,9 +62,10 @@ WiFiClient client;
 uint8_t mp3buff[64];   // vs1053 likes 32 bytes at a time
 VS1053 player(VS1053_CS, VS1053_DCS, VS1053_DREQ);
 
-void(* resetFunc) (void) = 0;       // declare reset function @ address 0
+//void(* resetFunc) (void) = 0;       // declare reset function @ address 0
 
 void setup () {
+
   Serial.begin(115200); while (!Serial); delay(200);
   Serial.println("Starting up Web Radio");
   delay(500);
@@ -138,6 +142,8 @@ void loop() {
     if (radioStation != previousRadioStation)
     {
       station_connect(radioStation);
+      Serial.print("Number of station: ");
+      Serial.println(radioStation);
       previousRadioStation = radioStation;
       seconds = 0;
     } else
@@ -162,7 +168,7 @@ void loop() {
     u8g2.sendBuffer();
 
     if ((!digitalRead(rotarySW))) {
-      resetFunc();        // doing a reset when rotary switch pressed
+      ESP.restart();   // button pressed, doing a restart
     }
   }
 
@@ -183,20 +189,32 @@ void station_connect (int station_no ) {
                "Connection: close\r\n\r\n");
 }
 
-void go_online() {
+void configModeCallback (WiFiManager * myWiFiManager) {
   u8g2.clearBuffer();
   u8g2.drawStr(12, 8,  "WiFi not configured");
   u8g2.drawStr(12, 20, "Connect to WLan:");
   u8g2.drawStr(12, 31, "--> WebRadio_AP");
   u8g2.sendBuffer();
-  ESP_WiFiManager ESP_wifiManager("WebRadio_AP");
-  ESP_wifiManager.autoConnect("WebRadio_AP");
+}
+
+void go_online() {
+
+  WiFiManager wifiManager;
+  wifiManager.setAPCallback(configModeCallback);
+
+  if (!wifiManager.autoConnect("WebRadio_AP")) {
+    Serial.println("failed to connect and hit timeout");
+    delay(3000);
+    ESP.restart();   // no luck - going to restart the ESP
+  }
+  Serial.println("connected...yeey :)");
+
   if (WiFi.status() == WL_CONNECTED) {
     Serial.print("Connected. Local IP: ");
     Serial.println(WiFi.localIP());
   }
   else {
-    Serial.println(ESP_wifiManager.getStatus(WiFi.status()));
+    Serial.println("No WiFi connection!");
   }
 }
 
