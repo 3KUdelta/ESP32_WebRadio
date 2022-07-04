@@ -21,6 +21,9 @@ Customized by Marc Stähli / Jan 2021 / July 2022
 Print this radio yourself: https://www.thingiverse.com/thing:4729220
   
 
+https://user-images.githubusercontent.com/48127424/177216696-731b624a-1677-482c-ae13-abf8d0a44459.mp4
+
+
 [![ESP32_WebRadio](https://github.com/3KUdelta/ESP32_WebRadio/blob/main/pictures/IMG_20210119_143840.png)](https://github.com/3KUdelta/ESP32_WebRadio)
 
   
