@@ -44,8 +44,8 @@ ESP32Encoder encoder;
 //***** OLED
 U8G2_SSD1306_128X32_UNIVISION_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);
 
-long interval = 1000;
-int SECONDS_TO_AUTOSAVE = 30;
+long interval = 100;
+int SECONDS_TO_AUTOSAVE = 100;
 long seconds = 0;
 long previousMillis = 0;
 
@@ -129,17 +129,17 @@ void loop() {
 
     if (radioStation != previousRadioStation)   // we are changing the station
     {
-      currentState = 0;
       station_connect(radioStation);
       Serial.print("Number of station: ");
       Serial.println(radioStation);
       previousRadioStation = radioStation;
       seconds = 0;
+      currentState = 0;                         // starting statemachine from top
+      wait(0, 1);                               // clearing wait function with parameter 1
     } else
     {
       seconds++;
-      if (seconds == SECONDS_TO_AUTOSAVE)
-      {
+      if (seconds == SECONDS_TO_AUTOSAVE) {
         int readStation = readStationFromEEPROM();
         if (readStation != radioStation)
         {
@@ -156,16 +156,17 @@ void loop() {
 
   switch (currentState) {                          // non-blocking statemachine to allow button interrupt
     case 0:
-      u8g2.clearBuffer();
-      u8g2.setCursor(7, 22);
-      u8g2.print(String(radioname[radioStation]));
-      u8g2.drawLine(0, 0, 127, 0);
-      u8g2.drawLine(0, 31, 127, 31);
-      u8g2.sendBuffer();
+      u8g2.firstPage();
+      do {
+        u8g2.setCursor(7, 22);
+        u8g2.print(String(radioname[radioStation]));
+        u8g2.drawLine(0, 0, 127, 0);
+        u8g2.drawLine(0, 31, 127, 31);
+      } while ( u8g2.nextPage() );
       currentState++;
       break;
     case 1:
-      if (wait(3000) == true)
+      if (wait(4000, 0) == true)
       {
         currentState++;        // if lapsed, go to next step (state)
         shift = 128;           // start at the right end of the screen (for case 2)
@@ -184,14 +185,14 @@ void loop() {
   }
 }
 
-void station_connect (int station_no ) {
-  u8g2.clearBuffer();
-  u8g2.setFont(u8g2_font_profont17_mr);
-  u8g2.setCursor(7, 22);
-  u8g2.print ("buffering ...");
-  u8g2.drawLine(0, 0, 127, 0);
-  u8g2.drawLine(0, 31, 127, 31);
-  u8g2.sendBuffer();
+void station_connect (int station_no) {
+  u8g2.firstPage();
+  do {
+    u8g2.setCursor(7, 22);
+    u8g2.print ("buffering ...");
+    u8g2.drawLine(0, 0, 127, 0);
+    u8g2.drawLine(0, 31, 127, 31);
+  } while ( u8g2.nextPage() );
   stream.stopSong();
   Serial.println(String(radioname[radioStation]));
   stream.connecttohost(host[radioStation]);
@@ -226,36 +227,23 @@ void go_online() {
   }
 }
 
-int readStationFromEEPROM()
-{
+int readStationFromEEPROM() {
   int aa;
   aa = EEPROM.read(0);
   return aa;
 }
 
-void writeStationToEEPROM()
-{
+void writeStationToEEPROM() {
   Serial.println("Saving radio station to EEPROM: " + String(radioStation));
   EEPROM.write(0, radioStation);
   EEPROM.commit();
 }
-void audio_showstation(const char* info) {
-  Serial.printf("showstation: %s\n", info);
-}
 
-void audio_showstreamtitle(const char* info) {
-  Serial.printf("streamtitle: %s\n", info);
-  songinfo = info;
-  textwidth = u8g2.getUTF8Width(info);    // calculate the pixel width of the text
-}
-
-void audio_eof_stream(const char* info) {
-  Serial.printf("eof: %s\n", info);
-}
-bool wait(unsigned long duration)
-{
+bool wait(unsigned long duration, bool clearagain) {
   static unsigned long startTime;
   static bool isStarted = false;
+
+  if (clearagain) isStarted = false;
 
   if (isStarted == false)                  // if wait period not started yet
   {
@@ -269,4 +257,10 @@ bool wait(unsigned long duration)
     return true;          // indicate to caller that wait period has lapsed
   }
   return false;           // indicate to caller that wait period is in progress
+}
+
+void audio_showstreamtitle(const char* info) {
+  Serial.printf("streamtitle: %s\n", info);
+  songinfo = info;
+  textwidth = u8g2.getUTF8Width(info);    // calculate the pixel width of the text
 }
