@@ -180,8 +180,9 @@ void loop() {
         u8g2.drawLine(0, 0, 127, 0);
         u8g2.drawLine(0, 31, 127, 31);
       } while ( u8g2.nextPage() );
-      if (shift == textwidth * -1) currentState = 0;
-      break;
+      if (textwidth < 0) textwidth = 0;
+      if (shift <= textwidth * -1) currentState = 0;
+    break;
   }
 }
 
