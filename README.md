@@ -19,9 +19,6 @@ Customized by Marc Stähli / Jan 2021 / July 2022
   - added scrolling interpret and song (ID3 metadata)
 
 Print this radio yourself: https://www.thingiverse.com/thing:4729220
-  
-
-https://user-images.githubusercontent.com/48127424/177216696-731b624a-1677-482c-ae13-abf8d0a44459.mp4
 
 
 [![ESP32_WebRadio](https://github.com/3KUdelta/ESP32_WebRadio/blob/main/pictures/IMG_20210119_143840.png)](https://github.com/3KUdelta/ESP32_WebRadio)
@@ -42,6 +39,8 @@ KY-040 360 Degrees Rotary Encoder (https://www.aliexpress.com/item/32718891419.h
 Audio Transformers 600:600 Ohm (https://www.aliexpress.com/item/4001253300947.html)
 
 AIYIMA 2Pcs 1.75 inch Speaker 4 Ohm 6W (https://www.aliexpress.com/item/4001259967285.html)
+
+https://user-images.githubusercontent.com/48127424/177216696-731b624a-1677-482c-ae13-abf8d0a44459.mp4
 
 [![ESP32_WebRadio](https://github.com/3KUdelta/ESP32_WebRadio/blob/main/pictures/IMG_20210119_143929.png)](https://github.com/3KUdelta/ESP32_WebRadio)
 
