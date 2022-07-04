@@ -14,7 +14,8 @@ Customized by Marc Stähli / Jan 2021
   - stereo version
   - added treble and bass control
   - added WiFiManger to config WiFi credentials over an access point
-  - added header file Stations.h for easier stations management
+  - added simplified header file Stations.h for easier stations management
+  - added scrolling interpret and song (ID3 metadata)
 
 Print this radio yourself: https://www.thingiverse.com/thing:4729220
   
