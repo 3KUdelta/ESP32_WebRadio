@@ -1,4 +1,4 @@
-const int totalStations = 10;    // if you add/delete stations change this accordingly
+const int totalStations = 9;    // if you add/delete stations change this accordingly
 
 char *radioname[totalStations] = {  // Station names to be displayed on OLED (max 13 chars)
   "Hit Radio FFH",
@@ -9,36 +9,18 @@ char *radioname[totalStations] = {  // Station names to be displayed on OLED (ma
   " Deluxe Easy ",
   "Absolut Chill",
   " Energy Hits ",
-  "  Energy Me  ",
-  "NRJ on social"
+  "  Energy Me  "
  };
 
 char *host[totalStations] = {
-  "mp3.ffh.de", 
-  "mp3.ffh.de", 
-  "mp3.ffh.de", 
-  "mp3.ffh.de", 
-  "stream.srg-ssr.ch", 
-  "deluxe.hoerradar.de",
-  "ais-sa5.cdnstream1.com",
-  "energyhits.ice.infomaniak.ch",
-  "energymetime.ice.infomaniak.ch",
-  "energyspecial2.ice.infomaniak.ch"
+  "http://mp3.ffh.de/radioffh/hqlivestream.mp3", 
+  "http://mp3.ffh.de/ffhchannels/hqlounge.mp3", 
+  "http://mp3.ffh.de/ffhchannels/hqsummerfeeling.mp3", 
+  "http://mp3.ffh.de/ffhchannels/hqvoting.mp3", 
+  "https://stream.srg-ssr.ch/m/rsp/mp3_128", 
+  "http://deluxe.hoerradar.de/deluxe-easy-mp3-hq",
+  "http://ais-sa5.cdnstream1.com/b05055_128mp3",
+  "http://energyhits.ice.infomaniak.ch/energyhits-high.mp3",
+  "http://energymetime.ice.infomaniak.ch/energymetime-high.mp3"
 };
 
-char *path[totalStations] = { 
-  "/radioffh/hqlivestream.mp3", 
-  "/ffhchannels/hqlounge.mp3", 
-  "/ffhchannels/hqsummerfeeling.mp3", 
-  "/ffhchannels/hqvoting.mp3", 
-  "/m/rsp/mp3_128", 
-  "/deluxe-easy-mp3-hq",
-  "/b05055_128mp3",
-  "/energyhits-high.mp3",
-  "/energymetime-high.mp3",
-  "/energyspecial2-high.mp3"
-};
-
-int port[totalStations] = {
-  80, 80, 80, 80, 80, 80, 80, 80, 80, 80
-};
