@@ -1,5 +1,5 @@
 # ESP32_WebRadio
-Stereo Web Radio using an ESP32
+Stereo Web Radio using an ESP32 with a VS1053
 
 Based on Simple ESP32 web radio player by Nick Koumaris - very nice job, Nick!
 Changed it quite a bit. It now runs very stable with Cellies ESP32_VS1053_Stream library. Additionally,
